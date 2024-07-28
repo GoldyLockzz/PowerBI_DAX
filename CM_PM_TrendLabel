@@ -1,0 +1,7 @@
+CM_PM_TrendLabel = 
+VAR month_diff=[CM Sales]-[PM Sales]  
+VAR mom=([CM Sales]- [PM Sales])/ [PM Sales] //month on month increase/ dec
+VAR _sign= IF(month_diff>0, "+","") //sign positive/ neg
+VAR sign_trend=IF(month_diff>0, "▲","▼")
+RETURN
+sign_trend&" "&_sign &FORMAT(mom,"#0.0%" & " | " & _sign & FORMAT(month_diff/1000,"0.0K"))& " "& "vs Last Month"
